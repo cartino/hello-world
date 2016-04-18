@@ -46,3 +46,5 @@ proc export data=work.datiSporchi_MIS_2
    REPLACE;
    delimiter=';';
 run;
+
+/* Fine */
