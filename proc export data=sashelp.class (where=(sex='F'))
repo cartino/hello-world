@@ -1,0 +1,5 @@
+proc export data=sashelp.class (where=(sex='F'))
+   outfile='c:\myfiles\Femalelist.csv'
+   dbms=csv
+   replace;
+run;
