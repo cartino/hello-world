@@ -1,9 +1,6 @@
-proc import datafile="C:\temp\test.csv"
-     out=shoes
+proc import datafile="D:\Users\MARROSSI\Desktop\Areu_18_04_16_comuni.csv"
+     out=comuni
      dbms=csv
-     replace;
-     getnames=no;
-run;
-
-proc print;
+     replace; delimiter=';' ;
+     getnames=yes ;
 run;
