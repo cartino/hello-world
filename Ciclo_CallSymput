@@ -1,0 +1,11 @@
+   data listaTab;
+    set LENGTH_CAMPI_SRC3a;
+    call symput(compress('dslib'!!_N_),compress(upcase(name))); 
+    call symput(compress('dsname'!!_N_),compress(memname));
+    call symput('Ntables',compress(_N_)); 
+	run;
+	
+	
+	/* salvo il valore contenuto nella variabile di nome "name"  in una macrovariabile di nome "dslib" (&dslib.)
+	   il comando " !! _N_ " mi permette di creare una call symput che cicla sul numero di osservazioni di quel ds su quel campo.
+	*/
