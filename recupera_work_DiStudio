@@ -1,0 +1,3 @@
+%let address = %sysfunc(pathname(WORK));
+
+%put &address.;
