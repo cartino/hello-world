@@ -1,0 +1,9 @@
+proc sql;
+	  create table duplicati_SIAGE_GIUST as
+	  select *, count(*) as Count
+      from ORA_SRC.MV_AG_MON_GIUSTIFICATIVI
+      group by ID_TEMPO, ID_DETTAGLIO_COSTI, ID_GIUSTIFICATIVO 
+      having count(*) > 1;
+quit;
+
+/* conta e mette su una tabella i duplicati dell associazione degli elementi della group by */
