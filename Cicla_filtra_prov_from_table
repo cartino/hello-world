@@ -1,0 +1,31 @@
+
+%macro Controllo;
+
+%let dsid = %sysfunc(open(work.incidenti2, i));
+%do %while (%sysfunc(fetch(&dsid))>-1);
+%let prov = %sysfunc(getvarc(&dsid, %sysfunc(varnum(&dsid, x_provincia))));
+
+%if &prov.= MONZA E DELLA BRIANZA %then %do;
+
+	Data incidenti_MeB;
+	set incidenti;
+	if x_provincia = "&prov.";
+	Run;
+
+%end;
+%else %do;
+
+	Data incidenti_&prov.;
+	set incidenti;
+	if x_provincia = "&prov.";
+	Run;
+%end;
+
+%end;
+%let rc = %sysfunc(close(&dsid));
+
+
+%mend;
+
+
+%Controllo;
