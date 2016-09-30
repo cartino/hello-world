@@ -1,0 +1,29 @@
+/*Log controllo*/
+%MACRO Redirect_Log(stato);
+ 
+%IF "&stato." = "START" %THEN %DO;
+      DATA _null_;
+                  p = put(datetime(), datetime.);
+                  p = tranwrd(p,':','');
+                  p = compress(left(p));
+                  CALL SYMPUT ('dataora', trim(p));
+      RUN;
+      %PUT dataora = ***&dataora.***;
+ 
+      filename flog "/progetti/mis/Log/Mis_&dataora..log";
+ 
+      proc printto log=flog new;
+      run;
+ 
+%END;
+ 
+%IF "&stato." = "STOP" %THEN %DO;
+      proc printto;
+      run;
+%END;
+ 
+%MEND;
+
+/* A1d2 - aster. as dava pb.
+%Redirect_Log(START);
+*/
