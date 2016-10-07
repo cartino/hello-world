@@ -1,0 +1,7 @@
+filename cportout '/progetti/sisel/menu_table.cpo';
+proc cport data=sisel.menu_table file=cportout;
+run;
+
+filename importin '/progetti/sisel/menu_table.cpo';
+proc cimport infile=importin library=sisel memtype=data;
+run;
