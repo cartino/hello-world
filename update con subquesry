@@ -1,0 +1,13 @@
+
+proc sql ;
+  update istat_matched s
+    set n_longitudine_comune = 
+      ( select   n_longitudine_comune 
+          from   mbdst u
+          where  u.c_istat = s.c_istat 
+      )  
+      where c_istat in
+      ( select   c_istat
+          from   mbdst u 
+      ) ;
+quit ;
