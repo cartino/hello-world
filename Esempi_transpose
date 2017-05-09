@@ -1,0 +1,16 @@
+PROC SORT
+	DATA=crtlv2.REPKPI_151617
+	OUT=REPKPI_151617
+	;
+	BY Anno TipoAgevolazione;
+RUN;
+PROC TRANSPOSE DATA=REPKPI_151617
+	OUT=REPKPI_151617T
+	PREFIX=Misura
+	NAME=Costi
+	LABEL=Label
+;
+	BY Anno TipoAgevolazione;
+	VAR NumAgevolazioni CostoValProCapite CostoValTotale Introiti CostoValNetto;
+
+RUN; QUIT;
